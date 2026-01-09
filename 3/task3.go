@@ -9,8 +9,9 @@ func encryptWord(word string) string {
 	if len(word) <= 1 {
 		return word
 	}
-	first := word[0]
-	rest := []rune(word[1:])
+	runes := []rune(word)
+	first := runes[0]
+	rest := runes[1:]
 	for i, j := 0, len(rest)-1; i < j; i, j = i+1, j-1 {
 		rest[i], rest[j] = rest[j], rest[i]
 	}
@@ -31,8 +32,8 @@ func main() {
 		"Pepe Schnele is a legend",
 		"Hello world",
 		"Go programming is fun",
+		"привет мир",
 	}
-
 	for _, p := range phrases {
 		encrypted := encryptPhrase(p)
 		fmt.Printf("Исходная: %s\nЗашифрованная: %s\n\n", p, encrypted)
